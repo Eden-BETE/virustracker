@@ -1,0 +1,12 @@
+dash
+dash-bootstrap-components
+pandas
+plotly
+requests
+beautifulsoup4
+schedule
+numpy
+waitress
+gunicorn 
+geopandas 
+flask 
