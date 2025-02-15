@@ -1,144 +1,85 @@
-# Viral Infections Tracker Dashboard
-[CLick here to see the dahsboard live] ()
-## Overview
-An interactive dashboard that tracks and visualizes viral infection data from around the world using data from the World Health Organization (WHO). The dashboard includes various visualizations such as choropleth maps, line charts, pie charts, and top 10 rankings to provide comprehensive insights into viral infection patterns.
+# 📊 Viral Respiratory Infections Dashboard
+An interactive dashboard developed with Dash by Plotly, designed to visualize real-time epidemiological data on viral respiratory infections. The dashboard automatically updates every day through an automated scraper that retrieves, processes, and stores new data from the World Health Organization (WHO).
 
-## Features
-- Real-time data updates through daily web scraping of WHO's FluNet database
-- Interactive world map showing infection distribution
-- Comparative analysis tools for different viruses and regions
-- Time series analysis of infection trends
-- Top 10 rankings of most affected countries
-- Positive/negative test rate visualization by country
+## 🌍 Live Application
+Explore the live dashboard here: **[https://virustracker.financeforge.fr/]**
 
-## Prerequisites
-- Python 3.12+
-- pip3 (Python package installer)
+## Dashboard Previews
+*(![alt text](image.png))*
 
-## Installation
+## Project Overview
+### Data Pipeline
+This project features an automated pipeline that scrapes epidemiological data from WHO’s FluNet database and updates the dashboard daily. The key steps include:
+- **Web Scraping:** A Python-based scraper fetches the latest data from WHO’s website.
+- **Data Processing:** The raw data is cleaned and formatted to align with UN country naming conventions.
+- **Storage:** The processed data is stored as a CSV file.
+- **Dashboard Update:** The Dash app visualizes the most recent data for real-time insights.
 
+### Automated Scraper
+- Scrapes data daily from WHO’s FluNet portal.
+- Uses Python libraries such as `requests`, `BeautifulSoup`, and `Pandas`.
+- Appends new data to the existing dataset without overwriting past records.
+- Runs automatically every day at 10:00 AM.
+
+## Database Management
+The dashboard relies on a structured and efficient data storage approach:
+- The latest epidemiological data is stored in a **CSV-based database**, ensuring quick access and compatibility with Pandas.
+- Data is appended incrementally to prevent duplication and data loss.
+- A versioning mechanism ensures that previous datasets remain accessible for validation and potential corrections.
+- The scraper updates only new records based on the latest available timestamp, preventing redundant entries and maintaining database integrity.
+- Future enhancements may include migrating to a SQL or NoSQL database for more robust querying and analysis.
+
+## Dash Application
+The dashboard provides:
+✔ Interactive maps showing infection spread.
+✔ Bar charts highlighting top affected countries.
+✔ Line graphs visualizing infection trends over time.
+✔ Pie charts depicting test positivity rates.
+✔ A user-friendly interface with a built-in help guide.
+
+## Deployment on cPanel
+Unlike cloud platforms like AWS or GCP, we deployed our Dash application on **cPanel**, a popular web hosting control panel. Here’s how the deployment process worked for us:
+
+1. **Uploading Files:**
+   - The entire project folder was uploaded to cPanel’s File Manager.
+   - Included essential files: `app.py`, `scraping.py`, `requirements.txt`, `passenger_wsgi.py`, and `app.wsgi`.
+
+2. **Setting Up the Python Environment:**
+   - We configured a Python application in cPanel and installed the required dependencies using `pip install -r requirements.txt`.
+   
+3. **Handling Data Updates:**
+   - The `scraping.py` script was set to run via a cron job in cPanel, ensuring daily updates to `data_flunet.csv`.
+   - The scraper updates only new records, preventing data duplication.
+
+4. **WSGI Configuration:**
+   - A `passenger_wsgi.py` file was added to properly load the Dash application.
+   - We encountered issues with the default app runner and had to explicitly specify the entry point:
+     ```python
+     from app import server as application
+     ```
+
+5. **Debugging and Fixes:**
+   - File permission issues required adjusting cPanel settings.
+   - Some dependencies were missing in the hosting environment and had to be manually installed.
+   - Passenger logs in cPanel helped troubleshoot deployment errors.
+
+## Installation & Local Setup
+To run the dashboard locally:
 1. Clone the repository:
-```bash
-git clone https://github.com/your-username/viral-infections-tracker.git
-cd viral-infections-tracker
-```
+   ```sh
+   git clone [repository-url]
+   ```
+2. Install dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. Run the application:
+   ```sh
+   python app.py
+   ```
 
-2. Install required packages:
-```bash
-pip install -r requirements.txt
-```
+For cloud or alternative hosting setups, modify configurations accordingly.
 
-## Project Structure
-```
-viral-infections-tracker/
-├── app.py                 # Main dashboard application
-├── scraping.py           # Data scraping script
-├── ploomber-cloud.yaml   # Ploomber Cloud configuration
-├── requirements.txt      # Project dependencies
-├── data_flunet.csv    #scraped data
-├──map.py
-├──pie.py
-├──TOP10.py
-├──topweek.py
-├──line_chart.py
-├──map.json     
-└── assets/
-    └── style.css        # Dashboard styling
-```
+---
+This dashboard provides an insightful, automated view of viral respiratory infection trends, helping researchers and decision-makers analyze global epidemiological patterns in real time.
 
-## Running Locally
-
-1. Start the data scraper:
-```bash
-python scraping.py
-```
-
-2. Launch the dashboard:
-```bash
-python app.py
-```
-
-3. Open your web browser and navigate to `http://localhost:8050`
-
-## Deployment on Ploomber Cloud
-
-1. Ensure you have a Ploomber Cloud account and the Ploomber CLI installed:
-```bash
-pip install ploomber-cloud
-```
-
-2. Login to Ploomber Cloud:
-```bash
-ploomber-cloud login
-```
-
-3. Deploy the application:
-```bash
-ploomber-cloud deploy
-```
-
-The deployment configuration will:
-- Run the data scraper daily at 00:00 UTC
-- Update the dashboard daily at 00:15 UTC
-- Make the dashboard accessible via a provided URL
-
-## Dashboard Components
-
-### 1. Positive and Negative Tests Rate
-- Pie chart showing the distribution of test results by country
-- Updated weekly with the latest available data
-
-### 2. Top 10 Weekly Infections
-- Bar chart displaying the countries with highest infection rates
-- Filterable by virus type
-- Weekly updates based on new data
-
-### 3. Global Distribution Map
-- Choropleth map showing infection distribution
-- Color-coded by infection intensity
-- Filterable by virus type
-
-### 4. Time Series Analysis
-- Line chart showing infection trends over time
-- Multiple country and virus selection
-- Regional filtering options
-
-### 5. Annual Statistics
-- Top 10 most affected countries in the current year
-- Total reported cases by country
-
-## Data Sources
-- World Health Organization's FluNet database
-- Data is automatically updated daily through web scraping
-
-## Contributors
-- [AGODE M.](https://moise-agode.github.io/)
-- [BETE E.](https://eden-bete.github.io/portfolio/)
-- [DENIS T.](https://www.theo-denis.com/Portfolio%20-%20English.html)
-- [MIEMO B.](https://borgiamiemo.github.io/Portfolio/)
-- [SORO C.](https://christelle-soro.github.io/portfolio/)
-
-
-## Troubleshooting
-
-### Common Issues
-
-1. Data not updating:
-   - Check internet connection
-   - Verify WHO's FluNet website accessibility
-   - Check scraping script logs
-
-2. Dashboard not loading:
-   - Ensure all dependencies are installed
-   - Verify data file exists and is not corrupted
-   - Check console for error messages
-
-### Support
-For issues and feature requests, please open an issue on the GitHub repository.
-
-## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
