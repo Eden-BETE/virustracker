@@ -5,6 +5,10 @@ An interactive dashboard developed with Dash by Plotly, designed to visualize re
 Explore the live dashboard here: **[https://virustracker.financeforge.fr/]**
 ⚠ If you receive a security warning after clicking the link, click on "Advanced settings" and then "Continue to said link"
 
+## Project Report 
+For a detailed explanation of the project, data sources, and methodology, refer to the full report:
+**[Download the Report](Rapport.pdf)**
+
 ## Dashboard Previews
 *![alt text](image.png)*
 
