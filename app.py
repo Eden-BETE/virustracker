@@ -111,7 +111,7 @@ app.layout = html.Div(id="dashboard", children=[
                                     ])]),
                                     html.Div(id="titre-center", children=[html.H1("Viral infections tracker")]),
                                     html.Div(id="titre-right", children=[html.A("> GitHub",
-                                                    href="https://github.com/Eden-BETE/influenza_tracker",
+                                                    href="https://github.com/Eden-BETE/virustracker",
                                                     target="_blank",
                                                 )
     ])]),

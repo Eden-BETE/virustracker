@@ -1,7 +1,7 @@
 # 📊 Viral Respiratory Infections Dashboard
 An interactive dashboard developed with Dash by Plotly, designed to visualize real-time epidemiological data on viral respiratory infections. The dashboard automatically updates every day through an automated scraper that retrieves, processes, and stores new data from the World Health Organization (WHO).
 
-## 🌍 Live Application
+## Live Application
 Explore the live dashboard here: **[https://virustracker.financeforge.fr/]**
 ⚠ If you receive a security warning after clicking the link, click on "Advanced settings" and then "Continue to said link"
 
@@ -32,11 +32,11 @@ The dashboard relies on a structured and efficient data storage approach:
 
 ## Dash Application
 The dashboard provides:
-✔ Interactive maps showing infection spread.
-✔ Bar charts highlighting top affected countries.
-✔ Line graphs visualizing infection trends over time.
-✔ Pie charts depicting test positivity rates.
-✔ A user-friendly interface with a built-in help guide.
+- Interactive maps showing infection spread.
+- Bar charts highlighting top affected countries.
+- Line graphs visualizing infection trends over time.
+- Pie charts depicting test positivity rates.
+- A user-friendly interface with a built-in help guide.
 
 ## Deployment on cPanel
 Unlike cloud platforms like AWS or GCP, we deployed our Dash application on **cPanel**, a popular web hosting control panel. Here’s how the deployment process worked for us:
@@ -57,12 +57,6 @@ Unlike cloud platforms like AWS or GCP, we deployed our Dash application on **cP
    - We encountered issues with the default app runner and had to explicitly specify the entry point:
      ```python
      from app import server as application
-     ```
-
-5. **Debugging and Fixes:**
-   - File permission issues required adjusting cPanel settings.
-   - Some dependencies were missing in the hosting environment and had to be manually installed.
-   - Passenger logs in cPanel helped troubleshoot deployment errors.
 
 ## Installation & Local Setup
 To run the dashboard locally:
