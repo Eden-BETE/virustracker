@@ -72,11 +72,11 @@ To run the dashboard locally:
    ```
 2. Install dependencies:
    ```sh
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 3. Run the application:
    ```sh
-   python app.py
+   python3 app.py
    ```
 
 For cloud or alternative hosting setups, modify configurations accordingly.
