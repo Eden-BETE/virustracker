@@ -3,9 +3,10 @@ An interactive dashboard developed with Dash by Plotly, designed to visualize re
 
 ## 🌍 Live Application
 Explore the live dashboard here: **[https://virustracker.financeforge.fr/]**
+⚠ If you receive a security warning after clicking the link, click on "Advanced settings" and then "Continue to said link"
 
 ## Dashboard Previews
-*(![alt text](image.png))*
+*![alt text](image.png)*
 
 ## Project Overview
 ### Data Pipeline
